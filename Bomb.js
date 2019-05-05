@@ -1,7 +1,5 @@
 class Bomb {
     constructor() {
-
-
         this.x = Math.floor(Math.random() * matrix[0].length);
         this.y = Math.floor(Math.random() * matrix.length);
         this.directions = [];

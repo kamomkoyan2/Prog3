@@ -124,9 +124,7 @@ function draw() {
         rumb[i].selfkill()
 
     }
-    // for(var i in rumb){
-    //     rumb[i].move();
-    // }
+  
 }
 
 
