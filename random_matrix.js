@@ -25,3 +25,5 @@ function setup() {
     }
 
 }
+
+module.exports = random_matrix;

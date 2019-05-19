@@ -1,75 +1,59 @@
-let side = 10;
-let xotArr = []; //խոտերի զանգված
-let eatArr = []; //խոտակերների զանգված
-let eatGrassEater = []; //Գիշատիչների Զանգված
-let eatGrassAndGrassEatter = []; // Խոտակերների և Գիշատիչների Ուտող Զանգվածը
-let rumb = [];  // 
-let matrix = []; // Մատրիցի ստեղծում
-let rows = 70; // Տողերի քանակ
-let columns = 70; // Սյուների քանակ
+var side = 25;
+var socket = io();
+var matrix = [];
 
-for (let y = 0; y < rows; y++) {
-    matrix[y] = []; // Մատրիցի նոր տողի ստեղծում
-    for (let x = 0; x < columns; x++) {
-        let a = Math.floor(Math.random() * 100);
-        if (a >= 0 && a < 20) {
-            matrix[y][x] = 0; // Մատրիցի 20 տոկոսը կլինի 0
-        }
-        if (a >= 20 && a < 40) {
-            matrix[y][x] = 1; // Մատրիցի 20 տոկոսը կլինի 1
-        }
-        else if (a >= 40 && a < 80) {
-            matrix[y][x] = 2; // Մատրիցի 10 տոկոսը կլինի 2
-        }
-        else if (a >= 70 && a < 80) {
-            matrix[y][x] = 3; // Մատրիցի 20 տոկոսը կլինի 3
-        }
-        else if (a >= 70 && a < 97) {
-            matrix[y][x] = 4; // Մատրիցի 20 տոկոսը կլինի 4
-        }
-        else if (a >= 98 && a < 100) {
-            matrix[y][x] = 5; // Մատրիցի 10 տոկոսը կլինի 5
-        }
-    }
-}
+exanak = "Ձմեռ";
+var weatherP = document.getElementById("weather")
+
+var ex = socket.on("exanaks", function (w) {
+    exanak = w;
+    weatherP.innerHTML = exanak;
+});
+
+socket.on('number', function (len) {
+    let grass = document.getElementById('grNum');
+    let grEater = document.getElementById('grEaNum')
+    let hunter = document.getElementById('hun')
+    grass.innerHTML = len[0];
+    grEater.innerHTML = len[1];
+    hunter.innerHTML = len[2]
+})
+
+socket.on('statistics', function (stat) {
+    let table = document.getElementById('table_statistics');
+    table.rows[2].cells[2].innerHTML = stat.died.grassEaters;
+    table.rows[2].cells[3].innerHTML = stat.died.hunters;
+    table.rows[3].cells[1].innerHTML = stat.killed.grasses;
+    table.rows[3].cells[2].innerHTML = stat.killed.grassEaters;
+    table.rows[4].cells[1].innerHTML = stat.born.grasses;
+    table.rows[4].cells[2].innerHTML = stat.born.grassEaters;
+    table.rows[4].cells[3].innerHTML = stat.born.hunters;
+    table.rows[5].cells[2].innerHTML = stat.ate.grassEaters;
+    table.rows[5].cells[3].innerHTML = stat.ate.hunters;
+})
+
+
 
 function setup() {
 
     frameRate(5);
-    createCanvas(matrix[0].length * side, matrix.length * side);
+    createCanvas(40 * side, 40 * side);
     background('#acacac');
 
 
 
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 2) {
-                var eatgrass = new Eatgrass(x, y);
-                eatArr.push(eatgrass);
-            } else if (matrix[y][x] == 1) {
-                var grass = new Grass(x, y);
-                xotArr.push(grass);
-            }
-            else if (matrix[y][x] == 3) {
-                var etg = new Eatgrasseater(x, y);
-                eatGrassEater.push(etg);
-            }
-            else if (matrix[y][x] == 4) {
-                var eget = new eatgrassAndgrasseater(x, y);
-                eatGrassAndGrassEatter.push(eget);
-            }
-            else if (matrix[y][x] == 5) {
-                var rum = new Bomb;
-                rumb.push(rum);
-            }
-
-        }
-    }
 }
 
 
-function draw() {
-    background('#acacac');
+function matrixDraw (matrix){
+
+    // matrix = data.matrix;
+
+    // createCanvas(matrix[0].length * side, matrix.length * side)
+
+    
+
+    // background('#acacac');
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[i].length; j++) {
             if (matrix[i][j] == 1) {
@@ -79,8 +63,19 @@ function draw() {
                 fill("orange");
 
             } else if (matrix[i][j] == 0) {
-                fill('#acacac');
-
+                if(exanak=="Գարուն") {
+                    fill(0,255,0)
+                }
+                // fill('#acacac');
+                else if(exanak=="Ամառ"){
+                    fill(0,155,0)
+                }
+                else if(exanak=="Աշուն"){
+                    fill(0,75,0)
+                }
+                else if(exanak=="Ձմեռ"){
+                    fill("white")
+                }
             }
             else if (matrix[i][j] == 3) {
                 fill("red");

@@ -1,0 +1,20 @@
+{
+  "name": "program",
+  "version": "1.0.0",
+  "description": "untitle",
+  "main": "Bomb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamomkoyan2/Prog3.git"
+  },
+  "author": "ananun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kamomkoyan2/Prog3/issues"
+  },
+  "homepage": "https://github.com/kamomkoyan2/Prog3#readme"
+}

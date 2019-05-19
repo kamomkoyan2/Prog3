@@ -1,4 +1,5 @@
-class Eatgrasseater extends LivingCreature  {
+var base = require("./base");
+module.exports=class Eatgrasseater extends LivingCreature  {
     constructor(x, y) {
        super(x,y)
         this.energy = 0;

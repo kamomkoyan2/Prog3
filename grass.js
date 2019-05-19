@@ -1,3 +1,4 @@
+var base = require("./base") 
 class Grass extends LivingCreature   {
     constructor(x, y,index) {
    super(x,y,index)
