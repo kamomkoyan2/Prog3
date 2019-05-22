@@ -32,7 +32,8 @@ module.exports =class Eatgrass extends LivingCreature {
     move() {
 
         var fundCords = this.getDirections(0);
-        var cord = random(fundCords);
+        var cord = fundCords[Math.floor(Math.random() * matrix.length)];
+        
 
         if (cord) {
             var x = cord[0];
@@ -53,7 +54,7 @@ module.exports =class Eatgrass extends LivingCreature {
     eat() {
 
         var fundCords = this.getDirections(1);
-        var cord = random(fundCords);
+        var cord = fundCords[Math.floor(Math.random()*fundCords.length)];
 
 
         if (cord) {
@@ -103,7 +104,7 @@ module.exports =class Eatgrass extends LivingCreature {
 
 
         var fundCords = this.getDirections(0);
-        var cord = random(fundCords);
+        var cord = fundCords[Math.floor(Math.random() * matrix.length)];
 
 
         if (cord) {

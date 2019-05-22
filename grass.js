@@ -1,5 +1,5 @@
 var LivingCreature = require("./base") 
-class Grass extends LivingCreature    {
+module.exports=class Grass extends LivingCreature    {
     constructor(x, y,index) {
    super(x,y,index)
     }
@@ -30,7 +30,7 @@ class Grass extends LivingCreature    {
         if (this.multiply == 2) {
 
             var fundCords = this.getDirections(0);
-            var cord = random(fundCords);
+            var cord = fundCords[Math.floor(Math.random() * matrix.length)];
             if (cord) {
                 var x = cord[0];
                 var y = cord[1];
