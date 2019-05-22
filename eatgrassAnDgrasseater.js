@@ -1,4 +1,4 @@
-var base = require("./base");
+var LivingCreature = require("./base");
 module.exports = class eatgrassAndgrasseater extends LivingCreature  {
     constructor(x, y) {
       super(x,y);

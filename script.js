@@ -1,36 +1,10 @@
 var side = 25;
+socket = io();
 var socket = io();
+socket.on("nkari matrix",drawmatrix)
 var matrix = [];
 
-exanak = "Ձմեռ";
-var weatherP = document.getElementById("weather")
 
-var ex = socket.on("exanaks", function (w) {
-    exanak = w;
-    weatherP.innerHTML = exanak;
-});
-
-socket.on('number', function (len) {
-    let grass = document.getElementById('grNum');
-    let grEater = document.getElementById('grEaNum')
-    let hunter = document.getElementById('hun')
-    grass.innerHTML = len[0];
-    grEater.innerHTML = len[1];
-    hunter.innerHTML = len[2]
-})
-
-socket.on('statistics', function (stat) {
-    let table = document.getElementById('table_statistics');
-    table.rows[2].cells[2].innerHTML = stat.died.grassEaters;
-    table.rows[2].cells[3].innerHTML = stat.died.hunters;
-    table.rows[3].cells[1].innerHTML = stat.killed.grasses;
-    table.rows[3].cells[2].innerHTML = stat.killed.grassEaters;
-    table.rows[4].cells[1].innerHTML = stat.born.grasses;
-    table.rows[4].cells[2].innerHTML = stat.born.grassEaters;
-    table.rows[4].cells[3].innerHTML = stat.born.hunters;
-    table.rows[5].cells[2].innerHTML = stat.ate.grassEaters;
-    table.rows[5].cells[3].innerHTML = stat.ate.hunters;
-})
 
 
 
