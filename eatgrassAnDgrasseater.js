@@ -27,7 +27,7 @@ module.exports = class eatgrassAndgrasseater extends LivingCreature  {
         let foundCords = this.getDirections(0);
         //let foundCords2 = this.getDirections(1);
         //let foundCords = foundCords1.concat(foundCords2);
-        let cord = foundCords[Math.floor(Math.random() * matrix.length)];
+        let cord = foundCords[Math.floor(Math.random() * foundCords.length)];
 
         if (cord) {
             var x = cord[0];
@@ -48,7 +48,7 @@ module.exports = class eatgrassAndgrasseater extends LivingCreature  {
 
         let foundCords = this.getDirections(0);
 
-        let cord = fundCords[Math.floor(Math.random() * matrix.length)];
+        let cord = fundCords[Math.floor(Math.random() * foundCords.length)];
 
 
         if (cord) {
@@ -68,7 +68,7 @@ module.exports = class eatgrassAndgrasseater extends LivingCreature  {
         let foundCords1 = this.getDirections(3);
         let foundCords2 = this.getDirections(2);
         let foundCords = foundCords1.concat(foundCords2);
-        let cord = foundCords[Math.floor(Math.random() * matrix.length)];
+        let cord = foundCords[Math.floor(Math.random() * foundCords.length)];
 
 
 

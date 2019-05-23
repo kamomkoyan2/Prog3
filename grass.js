@@ -26,11 +26,12 @@ module.exports=class Grass extends LivingCreature    {
 
 
     mul() {
+
         this.multiply++;
         if (this.multiply == 2) {
 
             var fundCords = this.getDirections(0);
-            var cord = fundCords[Math.floor(Math.random() * matrix.length)];
+            var cord = fundCords[Math.floor(Math.random() * fundCords.length)];
             if (cord) {
                 var x = cord[0];
                 var y = cord[1];
