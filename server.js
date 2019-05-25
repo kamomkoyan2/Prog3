@@ -43,17 +43,17 @@ columns = 20; // Սյուների քանակ
 
 matrix = [
     [0, 1, 2, 3, 4, 0, 4, 0, 1, 0, 0, 3, 1, 1, 1, 1, 1],
-    [0, 1, 1, 0, 0, 2, 0, 4, 1, 0, 0, 1, 1, 1, 1, 1, 1],
-    [0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 3, 1, 2, 1, 1, 1],
-    [0, 1, 2, 3, 0, 1, 3, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 1, 0, 3, 2, 0, 4, 1, 0, 0, 1, 1, 1, 1, 2, 3],
+    [0, 1, 5, 0, 2, 1, 0, 0, 1, 5, 1, 3, 1, 2, 1, 1, 1],
+    [0, 1, 2, 3, 0, 1, 3, 0, 1, 0, 1, 1, 1, 1, 1, 2, 1],
     [0, 1, 0, 0, 5, 1, 3, 0, 1, 5, 0, 1, 1, 2, 1, 1, 1],
-    [0, 1, 0, 0, 0, 1, 0, 3, 1, 0, 0, 3, 1, 1, 1, 1, 1],
+    [0, 1, 0, 0, 0, 1, 0, 3, 1, 4, 2, 3, 1, 1, 1, 2, 1],
     [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 2, 1, 1, 1],
     [0, 0, 0, 0, 0, 1, 0, 3, 1, 0, 0, 1, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 4, 1, 1, 1],
+    [0, 0, 0, 0, 0, 1, 0, 0, 1, 3, 0, 1, 1, 4, 1, 1, 1],
     [0, 0, 0, 0, 0, 1, 0, 0, 3, 0, 0, 1, 3, 1, 1, 1, 1],
     [2, 0, 0, 3, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [2, 0, 0, 0, 0, 1, 0, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1],
+    [2, 0, 0, 0, 0, 1, 0, 1, 1, 2, 2, 1, 1, 1, 4, 4, 5],
     [1, 1, 1, 1, 0, 1, 0, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1],
     ];
 //let random = require('./random');
@@ -130,13 +130,27 @@ function Game() {
     }
 
 
-    // for (var i in rumb) {
-    //     rumb[i].die();
-    //     rumb[i].selfkill()
+    for (var i in rumb) {
+        rumb[i].die();
+        rumb[i].selfkill()
 
-    // }
+    }
     io.sockets.emit("ugharkum em matrix nkari", obj);
 }
 
 setInterval(Game, 1000);
 
+var statistics ={ };
+
+
+setInterval(function(){
+    statistics.Grass =xotArr.length;
+    statistics.grass = xotArr.length;
+    statistics.eatgrass = eatArr.length;
+    statistics.Eatgrasseater = eatGrassEater.length;
+    statistics.eatgrassAnDgrasseater = eatGrassAndGrassEatter.length;
+    statistics.Bomb = Bomb.length;
+    fs.writeFile("Statistics.json", JSON.stringify(statistics),function(){
+        console.log("send");
+    })
+},100)

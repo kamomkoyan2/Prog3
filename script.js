@@ -10,6 +10,14 @@ function setup() {
 }
 
 
+function pushGrassEaters(){
+    socket.emit("Push GrassEater");
+    let elememnt=document.getElementById('grasseatter');
+}
+
+
+
+
 function matrixDraw(tvyal) {
     matrix = tvyal.matrix;
     exanak = tvyal.season;
