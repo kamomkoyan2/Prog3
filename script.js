@@ -1,19 +1,17 @@
-var side = 25;
+
+var side = 20;
 var socket = io();
 
 
 function setup() {
     frameRate(5);
-    createCanvas(20 * side, 20 * side);
+    createCanvas(20 * side, 20* side);
     background('#acacac');
     socket.on("ugharkum em matrix nkari", matrixDraw)
 }
 
 
-function pushGrassEaters(){
-    socket.emit("Push GrassEater");
-    let elememnt=document.getElementById('grasseatter');
-}
+
 
 
 
@@ -47,7 +45,32 @@ console.log(matrix);
             else if (matrix[i][j] == 4) {
                 fill("brown");
             }
+            else if(matrix[i][j]==6){
+                fill("black");
+            }
+
+
+
             rect(j * side, i * side, side, side);
         }
+
+
     }
+}
+
+socket.on('tvyal',matrixDraw)
+
+
+
+function pushGrassEaters(){
+    socket.emit('pushGrassEaters')
+    
+}
+
+
+function stormCall() {
+    socket.emit('stormCall');
+   
+    // var elem = document.getElementById('weather');
+    // elem.parentNode.removeChild(elem);
 }

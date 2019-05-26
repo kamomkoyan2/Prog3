@@ -4,7 +4,7 @@
     <meta charset="utf8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/socket.io/socket.io.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="p5.js"></script>
     <script src="script.js"></script>
     <style>
@@ -27,9 +27,16 @@
     <div style="background-color:black; width: 15px; 
     height: 15px"></div> ուտում ե և գիշատիչ
     <div style="background-color:#acacac; width:15px; height:15px"></div>Դատարկ տարածք<br><br>
-    <li>
-        <button onclick="pushGrassEaters()">Push GrassEaters</button>
-    </li>
+    <ul>
+        <li id="killer">
+            
+                <button class="buton" onclick="stormCall()">Call A Storm</button>
+			
+        </li>
+        <li>
+            <button class="buton" onclick="pushGrassEaters()">Push GrassEaters</button>
+        </li>
+    </ul>
     <!-- <table border="1" id="table_statistics">
 		<tr class="heading_table">
 			<th></th>
