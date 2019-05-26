@@ -26,26 +26,6 @@ rumb = [];
 boom = [];  // 
 
 
-// charecterStatistic = {
-//     died: {
-//         grassEaters: 0,
-//         hunters: 0,
-//     },
-//     killed: {
-//         grasses: 0,
-//         grassEaters: 0,
-//     },
-//     born: {
-//         grasses: 0,
-//         grassEaters: 0,
-//         hunters: 0,
-//     },
-//     ate: {
-//         grassEaters: 0,
-//         hunters: 0,
-//     },
-// }
-
 matrix = [
     [0, 1, 5, 3, 4, 7, 4, 0, 1, 0, 0, 3, 1, 1, 1, 1, 1, 3, 4, 7, 4, 0, ],
     [0, 1, 1, 0, 3, 2, 0, 4, 1, 6, 6, 1, 1, 1, 1, 2, 3, 3, 4, 7, 4, 0, ],
@@ -160,12 +140,27 @@ function create() {
     }
 }
 create()
+let seasonDate = 0
 obj = {
     matrix: matrix,
     season: "winter"
 
 }
 function Game() {
+    seasonDate++;
+    if(seasonDate <= 6)
+    {
+        obj.season = "winter"
+    }
+    else if(seasonDate <= 12)
+    {
+        obj.season = "summer"
+    }
+    
+    else 
+    {
+        seasonDate = 0;
+    }
     for (var i in xotArr) {
         xotArr[i].mul();
     }
@@ -198,7 +193,7 @@ function Game() {
     io.sockets.emit("ugharkum em matrix nkari", obj);
 }
 
-setInterval(Game, 600);
+setInterval(Game, 500);
 
 var statistics = { };
 
