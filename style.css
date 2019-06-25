@@ -10,6 +10,7 @@
 }
 
 .buton:hover{
+    border: none;
     cursor: pointer;
     zoom: 1.1;
     background-color: aqua;

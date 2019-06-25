@@ -23,7 +23,7 @@ eatArr = [];
 eatGrassEater = [];
 eatGrassAndGrassEatter = [];
 rumb = [];
-boom = [];  // 
+ // 
 
 
 matrix = [
@@ -130,10 +130,10 @@ function create() {
                 var rum = new Bomb;
                 rumb.push(rum);
             }
-            else if (matrix[y][x]== 6) {
-                var bom = new Boom;
-                boom.push(bom);
-            }
+            // else if (matrix[y][x]== 6) {
+            //     var bom = new Boom;
+            //     boom.push(bom);
+            // }
             
 
         }
@@ -186,9 +186,9 @@ function Game() {
         rumb[i].selfkill()
 
     }
-    for (var i in boom){
-        boom[i].kill();
-    }
+    // for (var i in boom){
+    //     boom[i].kill();
+    // }
    
     io.sockets.emit("ugharkum em matrix nkari", obj);
 }

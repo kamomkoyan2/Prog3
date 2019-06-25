@@ -55,9 +55,9 @@ console.log(matrix);
             else if (matrix[i][j] == 4) {
                 fill("brown");
             }
-            else if(matrix[i][j]==6){
-                fill("black");
-            }
+            // else if(matrix[i][j]==6){
+            //     fill("black");
+            // }
 
 
 
